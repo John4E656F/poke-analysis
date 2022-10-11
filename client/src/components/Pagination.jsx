@@ -11,7 +11,7 @@ const Page = ({ handleNext, handlePrevious, offset, count }) => {
                 {"<"} Previous
             </Button>
             <Button onClick={handleNext} disable={offset >= count?.count}>
-                {">"} Next
+                Next {">"}
             </Button>
         </Stack>
         
