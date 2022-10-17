@@ -1,4 +1,7 @@
-import React, { Component } from 'react';
+import React, { Component, useEffect, useState } from 'react';
+import {Link, useNavigate } from 'react-router-dom';
+import { useGetSinglePokemonQuery  } from '../services/pokemonSlice';
+
 import {
   Container,
     styled,
@@ -20,9 +23,9 @@ import MenuIcon from '@mui/icons-material/Menu';
 const Search = styled('div')(({ theme }) => ({
   position: 'relative',
   borderRadius: theme.shape.borderRadius,
-  backgroundColor: "#9B9B9B",
+  backgroundColor: "#ffffff",
   '&:hover': {
-    backgroundColor: "#747474",
+    backgroundColor: "#f0f0f04",
   },
   marginLeft: 0,
   width: '100%',
@@ -60,11 +63,38 @@ const StyledInputBase = styled(InputBase)(({ theme }) => ({
 }));
 
 export default function SearchAppBar() {
+  const navigate = useNavigate();
+  const [name, setName] = useState("");
+  const [searchText, setSearchText] = useState("");
+  const singlePokemonInfo = useGetSinglePokemonQuery(searchText.toLocaleLowerCase());
+
+  useEffect(() => {
+    singlePokemonInfo.isSuccess &&
+      searchText.length !== 0 &&
+      navigate(`/single/${searchText.toLowerCase()}`, {
+        state: { data: singlePokemonInfo.data, keyword: searchText },
+      });
+
+    singlePokemonInfo.isError &&
+    navigate(`/single/${searchText.toLowerCase()}`, {
+      state: { data: [], keyword: searchText },
+    });
+    console.log(name)
+  }, [searchText, singlePokemonInfo]);
+
+  const handleSubmit = (e) => {
+    e.preventDefault();
+    setSearchText(name);
+    singlePokemonInfo.isSuccess &&
+    searchText.length !== 0 &&
+    navigate(`/single/${searchText.toLowerCase()}`, {
+      state: { data: singlePokemonInfo.data, keyword: searchText },
+    });
+  }
     
     return (
       <Box >
-
-          <Toolbar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', }}>
+          <Toolbar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', backgroundColor: '#73a9ad' }}>
             <Box sx={{ width: '100%' }}>
               <Typography
                   variant="h6"
@@ -83,16 +113,21 @@ export default function SearchAppBar() {
             <Container >
               <Search>
                 <SearchIconWrapper>
-                  <SearchIcon />
+                  <SearchIcon type="submit" value="Search"/>
                 </SearchIconWrapper>
                 <StyledInputBase
+                  type= 'search'
+                  name="search"
+                  id="search"
+                  value={name}
+                  onChange={(e) => setName(e.target.value)}
+                  onKeyPress={(e) => setName(e.target.value)}
                   placeholder="Search…"
                   inputProps={{ 'aria-label': 'search' }}
                 />
               </Search>
             </Container>
           </Toolbar>
-
       </Box>
     );
   }
