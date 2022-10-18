@@ -170,7 +170,6 @@ const Analysis = () => {
                     for (let j = 0; j < pokemon.data.types.length; j++) {
                         let pokeType = pokemon.data.types[j].type.name;
                         mapPokemonType(pokeType)
-                        console.log(pokemonType)
                     }
                     
                 } 
