@@ -12,6 +12,12 @@ export const pokemonApi = createApi({
         method: "GET",
       })
     }),
+    getAllPokemonData: builder.query({
+      query: (limit) => ({
+        url: `?limit=${limit}`,
+        method: "GET",
+      })
+    }),
     getMoreDetails: builder.query({
       query: (url) => ({
         url: url,
@@ -43,6 +49,7 @@ export const pokemonApi = createApi({
 // auto-generated based on the defined endpoints
 export const { 
   useGetAllPokemonQuery,
+  useGetAllPokemonDataQuery,
   useGetMoreDetailsQuery,
   useGetRangeDataQuery,
   useGetSinglePokemonQuery,

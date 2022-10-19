@@ -8,13 +8,14 @@ import {
 	useGetRangeDataQuery,
 } from "../services/pokemonSlice";
 import Loading from "../components/Loading";
+import Navbar from "../components/Navbar";
 import {
     Container,
     Box,
 
 } from '@mui/material'
 
-const PokeBase = () => {
+const Pokedex = () => {
 	const responseInfo = useGetAllPokemonQuery();
 
 	const [data, setData] = useState([]);
@@ -48,9 +49,10 @@ const PokeBase = () => {
 	};
 
 	if (responseInfo.isError) return <h2 className="error-heading">An error occurred, {responseInfo.error.error}</h2>;
-console.log(data)
+// console.log(data)
 	return (
         <>
+			<Navbar />
 		    <Box sx={{
                 display: "flex", 
                 flexDirection: "row", 
@@ -83,4 +85,4 @@ console.log(data)
 	);
 };
 
-export default PokeBase;
+export default Pokedex;
