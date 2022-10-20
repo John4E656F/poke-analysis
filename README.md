@@ -1,6 +1,6 @@
 <div align="center">
 
-# Poke-Analysis
+<img src="./client/src/assets/images/pokeanalysislogo.png" alt="pokemon analysis website" />
 
 <a href="https://pokeanalysis.netlify.app/"><img src="https://media3.giphy.com/media/fSvqyvXn1M3btN8sDh/giphy.gif?cid=ecf05e47ik0kxtqnhhknu27hdkgplg126dx4tdjtll4gddbp&rid=giphy.gif&ct=g" width="200px;" alt="BarkingDogs"/></a>
 <p><b>Frontend Project</b></p>
