@@ -8,7 +8,6 @@ import {
 	useGetRangeDataQuery,
 } from "../services/pokemonSlice";
 import Loading from "../components/Loading";
-import Navbar from "../components/Navbar";
 import {
     Container,
     Box,
@@ -52,7 +51,6 @@ const Pokedex = () => {
 // console.log(data)
 	return (
         <>
-			<Navbar />
 		    <Box sx={{
                 display: "flex", 
                 flexDirection: "row", 

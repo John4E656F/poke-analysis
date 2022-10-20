@@ -17,7 +17,7 @@ import {
 
   import SearchIcon from '@mui/icons-material/Search';
 import MenuIcon from '@mui/icons-material/Menu';
-// import BG from '../../assets/banner.png';
+import Logo from '../assets/images/pokeanalysislogo.png';
 
   
 const Search = styled('div')(({ theme }) => ({
@@ -79,7 +79,7 @@ export default function SearchAppBar() {
     navigate(`/single/${searchText.toLowerCase()}`, {
       state: { data: [], keyword: searchText },
     });
-    console.log(name)
+    // console.log(name)
   }, [searchText, singlePokemonInfo]);
 
   const handleSubmit = (e) => {
@@ -95,20 +95,13 @@ export default function SearchAppBar() {
     return (
       <Box >
           <Toolbar sx={{ display: 'flex', flexDirection: 'row', justifyContent: 'space-evenly', backgroundColor: '#73a9ad' }}>
-            <Box sx={{ width: '100%' }}>
-              <Typography
-                  variant="h6"
-                  noWrap
-                  component="div"
-                  sx={{ display: { xs: 'none', sm: 'block' },  }}
-                >
-                  Poke Anaylsis
-              </Typography>
+            <Box sx={{ width: '100%'}}>
+              <Link to="/"><img src={Logo} alt="pokéanalysis logo" style={{ height: '50PX'}}/></Link>
             </Box>
             <Container sx={{ display: 'flex',  justifyContent: 'center', gap: 5, }}>
-              <Typography>Home</Typography>
-              <Typography>Pokedex</Typography>
-              <Typography>Charts</Typography>
+              <Link to="/"><Typography>Home</Typography></Link>
+              <Link to="/pokedex"><Typography>Pokedex</Typography></Link>
+              <Link to="/analysis"><Typography>Charts</Typography></Link>
             </Container>
             <Container >
               <Search>

@@ -1,6 +1,7 @@
 import React, { useEffect, useState, } from "react";
 import axios from 'axios';
 import Loading from "../components/Loading";
+import Navbar from "../components/Navbar";
 // import Chart from '../components/TypeChart'
 import {
 	useGetAllPokemonQuery,
@@ -165,6 +166,10 @@ const Analysis = () => {
         async function getData() {
             setIsLoading(true);
             try {
+                
+                // let pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/1`)
+                // console.log(pokemon.data.types)
+                // console.log(pokemon.data.types[0].type.name)
                 for (let i = 1; i <= 1142; i++) {
                     let pokemon = await axios.get(`https://pokeapi.co/api/v2/pokemon/${i}`)
                     // mapPokemonType(pokemon)
@@ -186,6 +191,12 @@ const Analysis = () => {
     }, [])
     return(
         <>
+            <Navbar />
+            {/* <React.Suspense fallback={<Loading />}>
+                <div>
+            <Chart data={pokemonType} setDetailsId={setDetailsId}/>
+            </div>
+            </React.Suspense> */}
             {isLoading ? 
             <>
             <Box sx={{ display: 'flex', justifyContent: 'center', alignItem: 'center', marginTop: '10px', }}>

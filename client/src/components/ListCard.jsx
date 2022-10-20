@@ -32,7 +32,7 @@ const SinglePokemon = ({ pokemon, setDetailsId }) => {
 				}
 				alt="indicator-img"
 				loading="lazy"
-				style={{width: "50px"}}
+				style={{width: "100px"}}
 			/>
 			<Typography sx={{
 				textTransform: "capitalize",
