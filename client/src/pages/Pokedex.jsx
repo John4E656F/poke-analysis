@@ -62,9 +62,9 @@ const Pokedex = () => {
                     alignItems:"center", 
                     flexDirection:"column",
                     padding: "17px",
-                    backgroundColor: "#faffd830",
-                    borderRadius: "11px",
-                    boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
+                    // backgroundColor: "#faffd830",
+                    // borderRadius: "11px",
+                    // boxShadow: "rgba(0, 0, 0, 0.16) 0px 1px 4px",
                     minHeight: "calc(100vh - 96px)",
                     }}>
 		    		{isLoading ? <Loading /> : <PokemonList data={data} setDetailsId={setDetailsId} />}
